@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linjb.dao.master.CollegeDao">
+	<resultMap id="BaseResultMap" type="com.linjb.model.College">
+		<result column="college_id" property="collegeId" />
+		<result column="college_name" property="collegeName" />
+	</resultMap>
+
+	<parameterMap id="College" type="com.linjb.model.College"/>
+
+	<sql id="Base_Column_List">
+		college_id,college_name
+	</sql>
+
+	<select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from college
+		where college_name = #{collegeName}
+	</select>
+
+</mapper>
